@@ -324,6 +324,14 @@ h1, h2, .ticker-track, .favorites-list strong, .favorites-rotated > span,
 .bingsu-sketch { bottom: 22%; height: 250px; position: absolute; right: 22%; transform: rotate(-9deg); width: 230px; z-index: 2; }
 .bingsu-sketch path, .bingsu-sketch circle, .favorites-bowl path, .favorites-bowl circle, .inside-cup path, .walking-guest path, .walking-guest circle { stroke: var(--ink); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3; }
 
+@media (min-width: 901px) and (max-width: 1200px) {
+  .statement { min-height: 1080px; }
+  .statement h2 { font-size: clamp(70px, 9vw, 108px); line-height: .76; }
+  .statement h2 span { margin-left: 10vw; }
+  .statement-photo { bottom: 4%; width: min(29vw, 320px); }
+  .statement-copy { max-width: 35vw; right: 6%; }
+}
+
 .favorites { background: var(--rice); border-bottom: 2px solid var(--ink); display: grid; grid-template-columns: 18% 64% 18%; min-height: 980px; }
 .favorites-label, .favorites-rotated { padding: 42px 22px; position: relative; }
 .favorites-label { border-right: 2px solid var(--ink); }
@@ -342,7 +350,7 @@ h1, h2, .ticker-track, .favorites-list strong, .favorites-rotated > span,
 .favorites-list strong { font-size: clamp(28px, 3.4vw, 52px); letter-spacing: -.025em; line-height: 1; text-transform: uppercase; }
 .favorites-list small { text-align: right; }
 .favorites-rotated { background: var(--butter); border-left: 2px solid var(--ink); overflow: hidden; }
-.favorites-rotated > span { bottom: 45%; font-size: clamp(38px, 5vw, 76px); left: 50%; position: absolute; text-transform: uppercase; transform: translate(-50%, 50%) rotate(90deg); white-space: nowrap; }
+.favorites-rotated > span { bottom: 50%; font-size: clamp(38px, 5vw, 76px); left: 50%; position: absolute; text-transform: uppercase; transform: translate(-50%, 50%) rotate(90deg); white-space: nowrap; }
 .favorites-bowl { bottom: 20px; left: 50%; position: absolute; transform: translateX(-50%); width: 150px; }
 
 .inside { background: var(--ink); border-bottom: 2px solid var(--ink); color: var(--rice); min-height: 1000px; overflow: hidden; position: relative; }
