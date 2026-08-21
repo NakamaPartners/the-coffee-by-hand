@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const photos = {
   menuCover: "/menu-cover.jpg",
@@ -45,6 +45,78 @@ function WalkingGuest({ className = "" }: { className?: string }) {
   );
 }
 
+type HeroVideoProps = {
+  poster: string;
+  label: string;
+  webm: string;
+  mp4: string;
+};
+
+function HeroVideo({ poster, label, webm, mp4 }: HeroVideoProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [autoplayBlocked, setAutoplayBlocked] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.defaultMuted = true;
+    video.muted = true;
+    video.playsInline = true;
+
+    const attemptPlay = () => {
+      const playPromise = video.play();
+      if (!playPromise) return;
+
+      playPromise
+        .then(() => setAutoplayBlocked(false))
+        .catch(() => setAutoplayBlocked(true));
+    };
+
+    video.addEventListener("loadedmetadata", attemptPlay);
+    video.addEventListener("canplay", attemptPlay);
+    attemptPlay();
+
+    return () => {
+      video.removeEventListener("loadedmetadata", attemptPlay);
+      video.removeEventListener("canplay", attemptPlay);
+    };
+  }, []);
+
+  return (
+    <>
+      <video
+        ref={videoRef}
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        poster={poster}
+        aria-label={label}
+      >
+        <source src={webm} type="video/webm" />
+        <source src={mp4} type="video/mp4" />
+      </video>
+      {autoplayBlocked && (
+        <button
+          className="video-play-fallback"
+          type="button"
+          aria-label={`Play ${label}`}
+          onClick={() => {
+            const video = videoRef.current;
+            if (!video) return;
+            video.muted = true;
+            void video.play().then(() => setAutoplayBlocked(false));
+          }}
+        >
+          <span aria-hidden="true">▶</span>
+        </button>
+      )}
+    </>
+  );
+}
+
 function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
@@ -62,33 +134,21 @@ function Home() {
 
       <section className="hero" id="top">
         <div className="hero-photo hero-photo-left">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
+          <HeroVideo
             poster="/hero-strawberry-matcha-poster.jpg"
-            aria-label="Strawberry matcha latte being prepared"
-          >
-            <source src="/hero-strawberry-matcha.webm" type="video/webm" />
-            <source src="/hero-strawberry-matcha.mp4" type="video/mp4" />
-          </video>
+            label="Strawberry matcha latte being prepared"
+            webm="/hero-strawberry-matcha.webm"
+            mp4="/hero-strawberry-matcha.mp4"
+          />
           <span className="photo-tab">Strawberry Matcha Latte</span>
         </div>
         <div className="hero-photo hero-photo-right">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
+          <HeroVideo
             poster="/hero-right-bingsu-poster.jpg"
-            aria-label="Bingsu being prepared at The Coffee By Hand"
-          >
-            <source src="/hero-right-bingsu.webm" type="video/webm" />
-            <source src="/hero-right-bingsu.mp4" type="video/mp4" />
-          </video>
+            label="Bingsu being prepared at The Coffee By Hand"
+            webm="/hero-right-bingsu.webm"
+            mp4="/hero-right-bingsu.mp4"
+          />
           <span className="photo-tab">as good as they look</span>
         </div>
         <div className="hero-copy"><span className="korean-name" lang="ko">커피 바이 핸드</span><h1><span>Coffee</span><span className="by-hand">By Hand</span></h1><p>Korean desserts, coffee, and a good reason to stay awhile.</p></div>
