@@ -324,6 +324,10 @@ h1, h2, .ticker-track, .favorites-list strong, .favorites-rotated > span,
 .bingsu-sketch { bottom: 22%; height: 250px; position: absolute; right: 22%; transform: rotate(-9deg); width: 230px; z-index: 2; }
 .bingsu-sketch path, .bingsu-sketch circle, .favorites-bowl path, .favorites-bowl circle, .inside-cup path, .walking-guest path, .walking-guest circle { stroke: var(--ink); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3; }
 
+@media (min-width: 901px) {
+  .statement { min-height: 1080px; }
+}
+
 .favorites { background: var(--rice); border-bottom: 2px solid var(--ink); display: grid; grid-template-columns: 18% 64% 18%; min-height: 980px; }
 .favorites-label, .favorites-rotated { padding: 42px 22px; position: relative; }
 .favorites-label { border-right: 2px solid var(--ink); }
