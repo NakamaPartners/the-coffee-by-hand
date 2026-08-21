@@ -466,7 +466,7 @@ footer span:last-child { grid-column: 3; justify-self: end; }
   .inside h2 span { margin-left: 0; }
   .inside > p { background: var(--ink); bottom: 7%; font-size: 10px; left: 16px; max-width: 230px; padding: 9px; }
   .inside-side { right: -22px; }
-  .inside-caption { gap: 5px; left: 14px; top: 55%; }
+  .inside-caption { gap: 5px; left: 14px; top: 51%; }
   .inside-caption span { font-size: 8px; padding: 6px 7px; }
   .inside-cup { bottom: 2%; right: -24px; width: 170px; }
   .visit { display: block; min-height: 0; }
