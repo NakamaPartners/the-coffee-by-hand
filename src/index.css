@@ -348,8 +348,8 @@ h1, h2, .ticker-track, .favorites-list strong, .favorites-rotated > span,
 .inside { background: var(--ink); border-bottom: 2px solid var(--ink); color: var(--rice); min-height: 1000px; overflow: hidden; position: relative; }
 .inside-photo { filter: saturate(.72) contrast(1.03); height: 100%; inset: 0; object-fit: cover; position: absolute; width: 100%; }
 .inside-wash { background: linear-gradient(180deg, rgba(23,21,18,.38) 8%, rgba(23,21,18,.82) 88%); inset: 0; position: absolute; }
-.inside h2 { font-size: clamp(78px, 11.5vw, 175px); left: 6%; letter-spacing: -.05em; line-height: .75; margin: 0; position: absolute; text-align: left; top: 8%; text-transform: uppercase; width: 88%; z-index: 2; }
-.inside h2 span { display: block; margin-left: 0; }
+.inside h2 { font-size: clamp(78px, 11.5vw, 175px); left: 5%; letter-spacing: -.05em; line-height: .75; margin: 0; position: absolute; top: 8%; text-transform: uppercase; width: 87%; z-index: 2; }
+.inside h2 span { display: block; margin-left: 12%; }
 .inside > p { bottom: 8%; font-size: 13px; left: 7%; line-height: 1.7; margin: 0; max-width: 430px; position: absolute; z-index: 3; }
 .inside-side { font-size: 10px; letter-spacing: .12em; position: absolute; right: 20px; text-transform: uppercase; top: 50%; transform: translateY(-50%) rotate(90deg); }
 .inside-cup { bottom: 6%; height: 260px; position: absolute; right: 13%; width: 290px; z-index: 3; }
