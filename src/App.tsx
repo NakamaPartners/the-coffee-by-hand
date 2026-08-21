@@ -60,26 +60,70 @@ function HeroVideo({ poster, label, webm, mp4 }: HeroVideoProps) {
     const video = videoRef.current;
     if (!video) return;
 
-    video.defaultMuted = true;
-    video.muted = true;
-    video.playsInline = true;
+    let disposed = false;
 
-    const attemptPlay = () => {
+    const prepareForAutoplay = () => {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.setAttribute("muted", "");
+      video.setAttribute("playsinline", "");
+    };
+
+    const logPlaybackError = (error: unknown) => {
+      if (!import.meta.env.DEV) return;
+      const detail = error instanceof Error ? error : new Error(String(error));
+      console.warn("Hero video autoplay failed", {
+        name: detail.name,
+        message: detail.message,
+        readyState: video.readyState,
+        networkState: video.networkState,
+        currentSrc: video.currentSrc,
+      });
+    };
+
+    const attemptPlay = (allowFallback: boolean) => {
+      prepareForAutoplay();
+      if (video.readyState < HTMLMediaElement.HAVE_FUTURE_DATA) return;
+
       const playPromise = video.play();
       if (!playPromise) return;
 
       playPromise
-        .then(() => setAutoplayBlocked(false))
-        .catch(() => setAutoplayBlocked(true));
+        .then(() => {
+          if (!disposed) setAutoplayBlocked(false);
+        })
+        .catch((error: unknown) => {
+          logPlaybackError(error);
+          if (
+            !disposed &&
+            allowFallback &&
+            error instanceof DOMException &&
+            error.name === "NotAllowedError"
+          ) {
+            setAutoplayBlocked(true);
+          }
+        });
     };
 
-    video.addEventListener("loadedmetadata", attemptPlay);
-    video.addEventListener("canplay", attemptPlay);
-    attemptPlay();
+    const retryWhenReady = () => attemptPlay(true);
+    const retryWhenVisible = () => {
+      if (document.visibilityState === "visible") retryWhenReady();
+    };
+
+    prepareForAutoplay();
+    video.addEventListener("loadeddata", retryWhenReady);
+    video.addEventListener("canplay", retryWhenReady);
+    window.addEventListener("pageshow", retryWhenVisible);
+    document.addEventListener("visibilitychange", retryWhenVisible);
+    attemptPlay(false);
 
     return () => {
-      video.removeEventListener("loadedmetadata", attemptPlay);
-      video.removeEventListener("canplay", attemptPlay);
+      disposed = true;
+      video.removeEventListener("loadeddata", retryWhenReady);
+      video.removeEventListener("canplay", retryWhenReady);
+      window.removeEventListener("pageshow", retryWhenVisible);
+      document.removeEventListener("visibilitychange", retryWhenVisible);
     };
   }, []);
 
@@ -107,7 +151,23 @@ function HeroVideo({ poster, label, webm, mp4 }: HeroVideoProps) {
             const video = videoRef.current;
             if (!video) return;
             video.muted = true;
-            void video.play().then(() => setAutoplayBlocked(false));
+            video.defaultMuted = true;
+            video.playsInline = true;
+            video.setAttribute("muted", "");
+            video.setAttribute("playsinline", "");
+            void video.play()
+              .then(() => setAutoplayBlocked(false))
+              .catch((error: unknown) => {
+                if (import.meta.env.DEV) {
+                  console.warn("Hero video manual play failed", {
+                    name: error instanceof Error ? error.name : "UnknownError",
+                    message: error instanceof Error ? error.message : String(error),
+                    readyState: video.readyState,
+                    networkState: video.networkState,
+                    currentSrc: video.currentSrc,
+                  });
+                }
+              });
           }}
         >
           <span aria-hidden="true">▶</span>
@@ -138,7 +198,7 @@ function Home() {
             poster="/hero-strawberry-matcha-poster.jpg"
             label="Strawberry matcha latte being prepared"
             webm="/hero-strawberry-matcha.webm"
-            mp4="/hero-strawberry-matcha.mp4"
+            mp4="/hero-strawberry-matcha-silent.mp4"
           />
           <span className="photo-tab">Strawberry Matcha Latte</span>
         </div>
@@ -147,7 +207,7 @@ function Home() {
             poster="/hero-right-bingsu-poster.jpg"
             label="Bingsu being prepared at The Coffee By Hand"
             webm="/hero-right-bingsu.webm"
-            mp4="/hero-right-bingsu.mp4"
+            mp4="/hero-right-bingsu-silent.mp4"
           />
           <span className="photo-tab">as good as they look</span>
         </div>

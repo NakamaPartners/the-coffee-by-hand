@@ -242,21 +242,21 @@ h1, h2, .ticker-track, .favorites-list strong, .favorites-rotated > span,
 .hero-photo img, .hero-photo video { display: block; filter: saturate(.86) contrast(1.04); height: clamp(170px, 21vw, 315px); object-fit: cover; width: 100%; }
 .video-play-fallback {
   align-items: center;
-  background: rgba(23, 21, 18, .72);
-  border: 0;
+  background: var(--butter);
+  border: 1.5px solid var(--ink);
   border-radius: 50%;
-  color: var(--rice);
+  color: var(--ink);
   cursor: pointer;
   display: flex;
-  font-size: 24px;
-  height: 58px;
+  font-size: 12px;
+  height: 34px;
   justify-content: center;
   left: 50%;
-  padding: 0 0 0 4px;
+  padding: 0 0 0 2px;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 58px;
+  width: 34px;
   z-index: 7;
 }
 .video-play-fallback:hover { background: var(--red); }
