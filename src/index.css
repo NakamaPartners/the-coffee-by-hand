@@ -321,7 +321,7 @@ h1, h2, .ticker-track, .favorites-list strong, .favorites-rotated > span,
 .statement-photo img { aspect-ratio: 4 / 3; filter: saturate(.82); object-fit: cover; object-position: 50% 70%; transform: scale(1.16); transform-origin: 50% 70%; width: 100%; }
 .statement-copy { bottom: 12%; font-size: clamp(12px, 1.15vw, 17px); line-height: 1.7; margin: 0; max-width: 430px; position: absolute; right: 8%; z-index: 4; }
 .statement-korean { bottom: 5%; font-size: clamp(24px, 3.2vw, 48px); position: absolute; right: 6%; transform: rotate(-3deg); }
-.bingsu-sketch { bottom: 22%; height: 250px; object-fit: contain; position: absolute; right: 22%; transform: rotate(-9deg); width: 230px; z-index: 2; }
+.bingsu-sketch { bottom: 22%; height: 325px; object-fit: contain; position: absolute; right: 22%; transform: rotate(-9deg); width: 300px; z-index: 2; }
 .bingsu-sketch path, .bingsu-sketch circle, .favorites-bowl path, .favorites-bowl circle, .inside-cup path, .walking-guest path, .walking-guest circle { stroke: var(--ink); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3; }
 
 @media (min-width: 901px) {
@@ -415,7 +415,7 @@ footer span:last-child { grid-column: 3; justify-self: end; }
   .statement h2 span { margin-left: 8vw; }
   .statement-photo { left: 4%; width: 42vw; }
   .statement-copy { max-width: 42vw; right: 5%; }
-  .bingsu-sketch { bottom: 26%; right: 16%; width: 170px; }
+  .bingsu-sketch { bottom: 26%; right: 16%; width: 205px; }
   .favorites { grid-template-columns: 16% 68% 16%; }
   .favorites-list a { grid-template-columns: 34px 1fr; }
   .favorites-list small { display: none; }
@@ -449,7 +449,7 @@ footer span:last-child { grid-column: 3; justify-self: end; }
   .statement-photo { bottom: 7%; left: 2%; width: 62vw; }
   .statement-copy { background: var(--rice); border: 1px solid var(--ink); bottom: 19%; font-size: 10px; max-width: 52vw; padding: 10px; right: 4%; }
   .statement-korean { bottom: 3%; font-size: 21px; right: 3%; }
-  .bingsu-sketch { bottom: 30%; right: -6%; width: 140px; }
+  .bingsu-sketch { bottom: 30%; right: -6%; width: 165px; }
   .favorites { display: block; min-height: 0; }
   .favorites-label { border-bottom: 2px solid var(--ink); border-right: 0; min-height: 112px; padding: 16px; }
   .favorites-label strong { font-size: 11px; margin-top: 18px; writing-mode: horizontal-tb; }
