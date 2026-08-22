@@ -234,7 +234,7 @@ function Home() {
           <a href={orderUrl} target="_blank" rel="noreferrer"><span>03</span><strong>Honey Croffle</strong><small>warm + crisp</small></a>
           <a href={orderUrl} target="_blank" rel="noreferrer"><span>04</span><strong>Coffee &amp; Tea</strong><small>all evening</small></a>
         </div></div>
-        <aside className="favorites-rotated"><span>Made to share</span><BingsuSketch className="favorites-bowl" /></aside>
+        <aside className="favorites-rotated"><span>Made to share</span><img className="favorites-bowl" src="/icon-ice-cream.png" alt="" aria-hidden="true" /></aside>
       </section>
 
       <section className="inside" id="inside">
