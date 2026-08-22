@@ -223,7 +223,7 @@ function Home() {
       <section className="statement" id="about">
         <span className="section-number">01 / HELLO</span><h2>Come for<span>something sweet.</span>Stay past sunset.</h2>
         <div className="statement-photo"><img src="/statement-plates.jpg" alt="A plated dessert and coffee at The Coffee By Hand" /><span>2180 Pleasant Hill Rd</span></div>
-        <BingsuSketch className="bingsu-sketch" /><p className="statement-copy">A Korean café in the heart of Duluth for bingsu, croffles, coffee, tea, and the kind of evenings that take their time.</p><span className="statement-korean" lang="ko">천천히, 맛있게</span>
+        <img className="bingsu-sketch" src="/icon-coffee-saucer.png" alt="" aria-hidden="true" /><p className="statement-copy">A Korean café in the heart of Duluth for bingsu, croffles, coffee, tea, and the kind of evenings that take their time.</p><span className="statement-korean" lang="ko">천천히, 맛있게</span>
       </section>
 
       <section className="favorites" id="favorites">
@@ -239,11 +239,11 @@ function Home() {
 
       <section className="inside" id="inside">
         <img className="inside-photo" src="/inside-background.jpg" alt="The warm interior at The Coffee By Hand" /><div className="inside-wash" />
-        <h2>A little room<span>for your whole evening.</span></h2><p>Booths, private study rooms, free WiFi, and enough time for one more cup.</p><span className="inside-side">03 / INSIDE</span><CupSketch className="inside-cup" /><div className="inside-caption"><span>work</span><span>talk</span><span>dessert</span><span>repeat</span></div>
+        <h2>A little room<span>for your whole evening.</span></h2><p>Booths, private study rooms, free WiFi, and enough time for one more cup.</p><span className="inside-side">03 / INSIDE</span><img className="inside-cup" src="/icon-seated-guest.png" alt="" aria-hidden="true" /><div className="inside-caption"><span>work</span><span>talk</span><span>dessert</span><span>repeat</span></div>
       </section>
 
       <section className="visit" id="visit">
-        <div className="visit-object"><div className="storefront-frame"><img src="/visit-coffee.jpg" alt="Coffee being served at The Coffee By Hand" /><span>you are here</span></div><WalkingGuest className="walking-guest" /></div>
+        <div className="visit-object"><div className="storefront-frame"><img src="/visit-coffee.jpg" alt="Coffee being served at The Coffee By Hand" /><span>you are here</span></div><img className="walking-guest" src="/icon-takeaway-cup.png" alt="" aria-hidden="true" /></div>
         <div className="visit-copy"><span className="section-number">04 / COME OVER</span><h2>Meet us in Duluth.</h2><div className="visit-details"><div><small>Address</small><p>2180 Pleasant Hill Road<br />Duluth, GA 30096</p></div><div><small>Hours</small><p>Daily, 11 AM to 11 PM<br />Friday and Saturday until midnight</p></div><div><small>Call</small><p><a href="tel:+17702328850">770 232 8850</a></p></div></div><div className="visit-actions"><a href="https://www.google.com/maps/search/?api=1&query=2180+Pleasant+Hill+Road+Duluth+GA+30096" target="_blank" rel="noreferrer">Get directions <span>↗</span></a><a href="https://www.instagram.com/thecoffeebyhandatl/" target="_blank" rel="noreferrer">Instagram <span>↗</span></a></div></div>
       </section>
 
